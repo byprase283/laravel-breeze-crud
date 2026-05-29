@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('users/data', [UserController::class, 'getUsersData'])->name('users.data');
     Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
+
+    Route::resource('posts', BlogController::class);
 });
 
 require __DIR__ . '/auth.php';

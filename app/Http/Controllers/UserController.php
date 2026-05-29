@@ -21,22 +21,22 @@ class UserController extends Controller
      */
     public function getUsersData(Request $request)
     {
-        if ($request->ajax()) {
-            // Using Laravel 13 features, you can pass regular queries or utilize attributes
-            $data = User::select(['id', 'name', 'email', 'created_at']);
+        // if ($request->ajax()) {
+        // Using Laravel 13 features, you can pass regular queries or utilize attributes
+        $data = User::select(['id', 'name', 'email', 'created_at']);
 
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->editColumn('created_at', function ($row) {
-                    return $row->created_at ? $row->created_at->format('d-m-Y H:i:s') : '-';
-                })
-                ->addColumn('action', function ($row) {
-                    $btn = '<button type="button" data-id="' . $row->id . '" class="btn btn-primary btn-sm editUserBtn">Edit</button>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at ? $row->created_at->format('d-m-Y H:i:s') : '-';
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '<button type="button" data-id="' . $row->id . '" class="btn btn-primary btn-sm editUserBtn">Edit</button>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        // }
     }
 
     public function edit($id)

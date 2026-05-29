@@ -129,6 +129,14 @@
                                         <p>Profile</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>Users</p>
+                                    </a>
+                                </li>
+
                             </ul>
                         </li>
 
