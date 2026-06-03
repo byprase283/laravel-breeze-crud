@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GempaController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
 
     Route::resource('posts', BlogController::class);
+
+    Route::get('/gempa', [GempaController::class, 'index'])->name('gempa.index');
 });
 
 require __DIR__ . '/auth.php';
